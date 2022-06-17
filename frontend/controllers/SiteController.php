@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\Camera;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -77,7 +78,17 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $camera = \common\models\Camera::find()->orderBy('id,department')->all();
+        return $this->render('index', ['camera' => $camera]);
+    }
+
+    public function actionCam(int $id)
+    {
+        $camera = @\common\models\Camera::findOne($id);
+        if (strtotime($camera->start_date) <= time() && strtotime($camera->end_date) >= time()) {
+            return $this->render('cam', ['camera' => $camera]);
+        }
+        return $this->redirect(['site/index']);
     }
 
     /**
@@ -85,9 +96,10 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionLogin()
+    public
+    function actionLogin()
     {
-        $this->layout='login';
+        $this->layout = 'login';
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -109,7 +121,8 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionLogout()
+    public
+    function actionLogout()
     {
         Yii::$app->user->logout();
 
@@ -121,7 +134,8 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionContact()
+    public
+    function actionContact()
     {
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
@@ -144,7 +158,8 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionAbout()
+    public
+    function actionAbout()
     {
         return $this->render('about');
     }
@@ -154,7 +169,8 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionSignup()
+    public
+    function actionSignup()
     {
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
@@ -172,7 +188,8 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionRequestPasswordReset()
+    public
+    function actionRequestPasswordReset()
     {
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
@@ -197,7 +214,8 @@ class SiteController extends Controller
      * @return mixed
      * @throws BadRequestHttpException
      */
-    public function actionResetPassword($token)
+    public
+    function actionResetPassword($token)
     {
         try {
             $model = new ResetPasswordForm($token);
@@ -220,10 +238,11 @@ class SiteController extends Controller
      * Verify email address
      *
      * @param string $token
-     * @throws BadRequestHttpException
      * @return yii\web\Response
+     * @throws BadRequestHttpException
      */
-    public function actionVerifyEmail($token)
+    public
+    function actionVerifyEmail($token)
     {
         try {
             $model = new VerifyEmailForm($token);
@@ -244,7 +263,8 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionResendVerificationEmail()
+    public
+    function actionResendVerificationEmail()
     {
         $model = new ResendVerificationEmailForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {

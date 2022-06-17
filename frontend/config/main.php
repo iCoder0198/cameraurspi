@@ -47,6 +47,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'camera/<id:\d+>' => 'site/cam',
             ],
         ],
 
