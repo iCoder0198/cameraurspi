@@ -81,7 +81,7 @@ $this->title = Yii::$app->name;
         </tr>
         <?php foreach ($camera as $cameraItem): ?>
         <?php
-            $countDepartment = Camera::find()->where(['department'=>$cameraItem->id])->count();
+            $countDepartment = Camera::find()->where(['department'=>$cameraItem->department])->count();
             ?>
             <tr style="border: 1px solid #000000">
                 <?php if (
