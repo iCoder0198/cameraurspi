@@ -1,15 +1,15 @@
 <?php
 
-namespace common\models\query;
+namespace common\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Camera;
+use common\models\User;
 
 /**
- * CameraSearch represents the model behind the search form of `common\models\Camera`.
+ * queryUserSearch represents the model behind the search form of `common\models\User`.
  */
-class CameraSearch extends Camera
+class queryUserSearch extends User
 {
     /**
      * {@inheritdoc}
@@ -17,9 +17,8 @@ class CameraSearch extends Camera
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['name', 'department', 'specialty', 'type', 'start_date', 'end_date', 'description'], 'safe'],
-            [['active'], 'boolean'],
+            [['id', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['username', 'auth_key', 'password_hash', 'password_reset_token', 'email', 'verification_token'], 'safe'],
         ];
     }
 
@@ -41,7 +40,7 @@ class CameraSearch extends Camera
      */
     public function search($params)
     {
-        $query = Camera::find();
+        $query = User::find();
 
         // add conditions that should always apply here
 
@@ -60,16 +59,17 @@ class CameraSearch extends Camera
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'active' => $this->active,
+            'status' => $this->status,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['ilike', 'name', $this->name])
-            ->andFilterWhere(['ilike', 'department', $this->department])
-            ->andFilterWhere(['ilike', 'specialty', $this->specialty])
-            ->andFilterWhere(['ilike', 'type', $this->type])
-            ->andFilterWhere(['ilike', 'start_date', $this->start_date])
-            ->andFilterWhere(['ilike', 'end_date', $this->end_date])
-            ->andFilterWhere(['ilike', 'description', $this->description]);
+        $query->andFilterWhere(['ilike', 'username', $this->username])
+            ->andFilterWhere(['ilike', 'auth_key', $this->auth_key])
+            ->andFilterWhere(['ilike', 'password_hash', $this->password_hash])
+            ->andFilterWhere(['ilike', 'password_reset_token', $this->password_reset_token])
+            ->andFilterWhere(['ilike', 'email', $this->email])
+            ->andFilterWhere(['ilike', 'verification_token', $this->verification_token]);
 
         return $dataProvider;
     }

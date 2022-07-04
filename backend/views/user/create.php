@@ -3,13 +3,13 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Camera */
+/* @var $model common\models\User */
 
-$this->title = 'Create Camera';
-$this->params['breadcrumbs'][] = ['label' => 'Cameras', 'url' => ['index']];
+$this->title = Yii::t('app', 'Create User');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Users'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="camera-create">
+<div class="user-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

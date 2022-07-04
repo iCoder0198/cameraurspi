@@ -32,25 +32,35 @@ AppAsset::register($this);
             'brandLabel' => Html::img(Yii::getAlias('@web') . '/img/logo.png', ['alt' => '', 'class' => 'img-fluid', 'style' => 'width:60px']) . '&nbsp;&nbsp;Urganch davlat universiteti',
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
-                'class' => 'navbar navbar-expand-md navbar-dark bg-primary fixed-top',
+                'class' => 'navbar navbar-expand-md navbar-dark fixed-top',
+                'style' => "background-color: #5894f5;"
             ],
-            'innerContainerOptions' => ['class' => 'container-fluid'],
         ]);
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav'],
             'items' => [
+                Yii::$app->user->isGuest ? (
+                ['label' => Yii::t('app', 'Kirish'), 'class' => 'text-left', 'url' => ['/site/login']]
+                ) : (
+                    Html::beginForm(['/site/logout'], 'post')
+                    . '<div class="row">'
+                    . '<div class="offset-md-11 col-md-12">'
+                    . Html::submitButton(
+                        Yii::t('app', 'Chiqish') . ' (' . Yii::$app->user->identity->username . ')',
+                        ['class' => 'btn  logout']
+                    )
+                    . '</div>'
+                    . '</div>'
+                    . Html::endForm()
+                )
             ],
         ]);
         NavBar::end();
         ?>
     </header>
 
-    <main role="main" class="flex-shrink-0">
+    <main role="main" class="flex-shrink p-5">
         <div class="container-fluid">
-            <?= Breadcrumbs::widget([
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ]) ?>
-            <?= Alert::widget() ?>
             <?= $content ?>
         </div>
     </main>

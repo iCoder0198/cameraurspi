@@ -12,7 +12,8 @@ $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="wrapper">
-    <div class="logo"><a href="<?=Yii::$app->getHomeUrl()?>"><img src=<?=Yii::getAlias('@web')."/img/logo-circle.png"?> alt=""></a> </div>
+    <div class="logo"><a href="<?= Yii::$app->getHomeUrl() ?>"><img
+                    src=<?= Yii::getAlias('@web') . "/img/logo.png" ?> alt=""></a></div>
     <div class="text-center mt-4 name"> Tizimga kirish</div>
     <?php $form = ActiveForm::begin([
         'id' => 'login-form',
@@ -32,36 +33,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= $form->field($model, 'password')->passwordInput([
         'placeholder' => 'Password'
     ]) ?>
-    <?= $form->field($model, 'rememberMe', [
-        'template' => "{label}<div class=\"col-lg-offset-2 col-lg-3\">{input}</div>\n<div class=\"col-lg-7\">{error}</div>",
-    ])->checkbox() ?>
-
     <div class="form-group row">
         <div class=" col-lg-12" style="padding: 8px">
             <?= Html::submitButton(Yii::t('app', 'Login'), ['class' => 'btn btn-primary']) ?>
         </div>
-
-        <div class="col-md-12">
-            Akkaunt yo'qmi? <?= Html::a(Yii::t("app", "Register"), ["/user/register"]) ?>
-            <!--            --><? //= Html::a(Yii::t("user", "Forgot password") . "?", ["/user/forgot"]) ?><!-- /-->
-            <!--            --><? //= Html::a(Yii::t("user", "Resend confirmation email"), ["/user/resend"]) ?>
-        </div>
     </div>
 
     <?php ActiveForm::end(); ?>
-
-    <?php if (Yii::$app->get("authClientCollection", false)): ?>
-        <div class="col-lg-offset-2 col-lg-10">
-            <?= yii\authclient\widgets\AuthChoice::widget([
-                'baseAuthUrl' => ['/user/auth/login']
-            ]) ?>
-        </div>
-    <?php endif; ?>
-
-    <div class="col-lg-offset-2" style="color:#999;">
-        You may login with <strong>neo/neo</strong>.<br>
-        To modify the username/password, log in first and then <?= HTML::a("update your account", ["/user/account"]) ?>.
-    </div>
 
 </div>
 <style>
