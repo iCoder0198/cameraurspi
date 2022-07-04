@@ -21,8 +21,8 @@ $this->title = Yii::$app->name;
 <div class="site-index">
     <div class="row">
         <?php foreach ($camera as $cameraItem): ?>
-            <div class="col-md-6">
-                <iframe src="<?= $cameraItem->link ?>" width="640" height="480" frameborder="0"
+            <div class="col-md-4">
+                <iframe src="<?= $cameraItem->link ?>" width="610" height="460" frameborder="0"
                         allowfullscreen></iframe>
             </div>
         <?php endforeach; ?>
