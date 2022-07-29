@@ -36,25 +36,25 @@ AppAsset::register($this);
                 'style' => "background-color: #5894f5;"
             ],
         ]);
-        echo Nav::widget([
-            'options' => ['class' => 'navbar-nav'],
-            'items' => [
-                Yii::$app->user->isGuest ? (
-                ['label' => Yii::t('app', 'Kirish'), 'class' => 'text-left', 'url' => ['/site/login']]
-                ) : (
-                    Html::beginForm(['/site/logout'], 'post')
-                    . '<div class="row">'
-                    . '<div class="offset-md-11 col-md-12">'
-                    . Html::submitButton(
-                        Yii::t('app', 'Chiqish') . ' (' . Yii::$app->user->identity->username . ')',
-                        ['class' => 'btn  logout']
-                    )
-                    . '</div>'
-                    . '</div>'
-                    . Html::endForm()
-                )
-            ],
-        ]);
+//        echo Nav::widget([
+//            'options' => ['class' => 'navbar-nav'],
+//            'items' => [
+//                Yii::$app->user->isGuest ? (
+//                ['label' => Yii::t('app', 'Kirish'), 'class' => 'text-left', 'url' => ['/site/login']]
+//                ) : (
+//                    Html::beginForm(['/site/logout'], 'post')
+//                    . '<div class="row">'
+//                    . '<div class="offset-md-11 col-md-12">'
+//                    . Html::submitButton(
+//                        Yii::t('app', 'Chiqish') . ' (' . Yii::$app->user->identity->username . ')',
+//                        ['class' => 'btn  logout']
+//                    )
+//                    . '</div>'
+//                    . '</div>'
+//                    . Html::endForm()
+//                )
+//            ],
+//        ]);
         NavBar::end();
         ?>
     </header>
