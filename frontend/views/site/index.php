@@ -76,10 +76,11 @@ $this->title = Yii::$app->name;
         <?php foreach ($camera as $cameraItem): ?>
             <?php
             $countDepartment = Camera::find()->where(['department'=>$cameraItem->department])->count();
-            ?>
+
+                       ?>
             <tr style="border: 1px solid #000000">
                 <?php if (
-                    $cameraItem->id===1  ||
+                    $cameraItem->id===2  ||
                     Camera::findOne(['id'=>$cameraItem->id-1])->department !== $cameraItem->department
                 ): ?>
                     <td style="border: 1px solid #000000;"
