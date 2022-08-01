@@ -85,9 +85,9 @@ class SiteController extends Controller
     public function actionCam(int $id)
     {
         $camera = @\common\models\Camera::findOne($id);
-        if (strtotime($camera->start_date) <= time() && strtotime($camera->end_date) >= time()) {
+//        if (strtotime($camera->start_date) <= time() && strtotime($camera->end_date) >= time()) {
             return $this->render('cam', ['camera' => $camera]);
-        }
+//        }
         return $this->redirect(['site/index']);
     }
 
