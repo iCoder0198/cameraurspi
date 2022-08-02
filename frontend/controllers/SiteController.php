@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use common\models\Camera;
+use common\models\hemis\EDepartment;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -78,15 +79,28 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $camera = \common\models\Camera::find()->orderBy('department,id')->all();
-        return $this->render('index', ['camera' => $camera]);
+        $camera = Camera::find()->asArray()->all();
+        $departments = EDepartment::find()->select(['id', 'name'])->where(['_structure_type' => 11])->asArray()->all();
+        foreach ($departments as $key => $department) {
+            $departments[$key]['cameras'] = Camera::find()->where(['department' => $department])->asArray()->all();
+        }
+        /**
+         * remove empty cameras
+         */
+        foreach ($departments as $key => $department) {
+            if (empty($department['cameras'])) {
+                unset($departments[$key]);
+            }
+        }
+
+        return $this->render('index', ['departments' => $departments]);
     }
 
     public function actionCam(int $id)
     {
         $camera = @\common\models\Camera::findOne($id);
 //        if (strtotime($camera->start_date) <= time() && strtotime($camera->end_date) >= time()) {
-            return $this->render('cam', ['camera' => $camera]);
+        return $this->render('cam', ['camera' => $camera]);
 //        }
         return $this->redirect(['site/index']);
     }

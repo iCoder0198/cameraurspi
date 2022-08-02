@@ -2,9 +2,8 @@
 
 /* @var $this yii\web\View */
 
-/* @var $camera Camera */
+/* @var $departments array */
 
-/* @var $cameraItem Camera */
 
 use common\models\Camera;
 use common\models\hemis\EDepartment;
@@ -16,7 +15,6 @@ $this->title = Yii::$app->name;
 <!--<header>-->
 <!--    <link rel="stylesheet" href="">-->
 <!--</header>-->
-
 
 
 <div class="site-index " style="text-align: center">
@@ -31,12 +29,11 @@ $this->title = Yii::$app->name;
         <colgroup width="152"></colgroup>
         <colgroup width="376"></colgroup>
         <colgroup width="238"></colgroup>
-        <colgroup width="238"></colgroup>
         <tr>
             <td colspan=4 height="34" align="center" valign=middle><b><font face="Times New Roman" size=3
                                                                             color="#000000">
                         Urganch davlat universiteti ijodiy imtihonlarni o'tkazish joylaridagi kuzatuv kameralari
-                        </font></b></td>
+                    </font></b></td>
             <td align="left" valign=middle><font face="Times New Roman" color="#000000"><br></font></td>
         </tr>
         <tr style="border: 1px solid #000000; vertical-align: middle" class="text-center">
@@ -54,15 +51,7 @@ $this->title = Yii::$app->name;
                     </font>
                 </b>
             </td>
-            <td style="border: 1px solid #000000; vertical-align: middle" class="text-center">
-                <b>
-                    <font face="Times New Roman" size=3 color="#000000">
-                        Yo'nalish nomi
-                    </font>
-                </b>
-            </td>
-
-            <td style="border: 1px solid #000000; vertical-align: middle" class="text-center">
+                        <td style="border: 1px solid #000000; vertical-align: middle" class="text-center">
                 <font face="Times New Roman" color="#000000">
                     Xonalar
                 </font>
@@ -73,44 +62,31 @@ $this->title = Yii::$app->name;
                 </font>
             </td>
         </tr>
-        <?php foreach ($camera as $cameraItem): ?>
-            <?php
-            $countDepartment = Camera::find()->where(['department'=>$cameraItem->department])->count();
-
-                       ?>
-            <tr style="border: 1px solid #000000">
-                <?php if (
-                    $cameraItem->id===2  ||
-                    Camera::findOne(['id'=>$cameraItem->id-1])->department !== $cameraItem->department
-                ): ?>
-                    <td style="border: 1px solid #000000;"
-                        rowspan=<?= $countDepartment ?> height="135"
-                        align="center" valign=middle sdval="1" sdnum="1033;"><font face="Times New Roman"
-                                                                                   size=3
-                                                                                   color="#000000">
-                            <?= $cameraItem->department ?>
-                        </font>
-                    </td>
-                    <td style="border: 1px solid #000000;"
-                        rowspan=<?= $countDepartment?> align="center" valign=middle><font face="Times New Roman" size=3 color="#000000">
-                            <?= EDepartment::findOne(['id'=>$cameraItem->department])->name?>
-                        </font></td>
-                <?php endif; ?>
-                <td style="border: 1px solid #000000;" class="text-center"
-                    align="left" valign=middle><font face="Times New Roman" size=3 color="#000000">
-                        <?= $cameraItem->specialty?>
-                    </font></td>
-
-                <td style="border: 1px solid #000000;" class="text-center">
-                    <font face="Times New Roman" color="#000000">
-                        <?= $cameraItem->name?>
+        <?php foreach ($departments as $department): ?>
+            <tr>
+                <td style="border: 1px solid #000000; vertical-align: middle" class="text-center">
+                    <font face="Times New Roman" size=3 color="#000000">
+                        <?= $department['id'] ?>
                     </font>
                 </td>
-                <td style="border: 1px solid #000000;" class="text-center">
-                    <font face="Times New Roman" color="#000000">
-                        <?= Html::a("Onlayn Kuzatish", Url::to(['site/cam','id'=>$cameraItem->id]))?>
+                <td style="border: 1px solid #000000; vertical-align: middle" class="text-center">
+                    <font face="Times New Roman" size=3 color="#000000">
+                        <?= $department['name'] ?>
                     </font>
                 </td>
+                <td style="border: 1px solid #000000; vertical-align: middle" class="text-center">
+                    <font face="Times New Roman" size=3 color="#000000">
+                        <?php foreach ($department['cameras'] as $camera): ?>
+                            <?= $camera['name']."<br>" ?>
+                        <?php endforeach; ?>
+                    </font>
+                </td>
+                <td style="border: 1px solid #000000; vertical-align: middle" class="text-center">
+                    <font face="Times New Roman" size=3 color="#000000">
+                        <?php foreach ($department['cameras'] as $camera): ?>
+                            <?= Html::a($camera['link'],$camera['link'])."<br>" ?>
+                        <?php endforeach; ?>
+                    </font>
             </tr>
         <?php endforeach; ?>
 
