@@ -12,15 +12,22 @@ use yii\bootstrap5\ActiveForm;
 
 <div class="camera-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(); $list = [
+        1 => "Tasviriy san'at va muhandislik grafikasi",
+        2 => "Musiqa ta'limi",
+        3 => "Jismoniy madaniyat",
+        4 => "Sport faoliyati (xotin-qizlar sporti yo'nalishlar bo'yicha)",
+        5 => "Sport faoliyati: kurash",
+        6 => "Sport faoliyati: futbol",
+    ]; ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'link')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'department')->dropDownList(
-            \yii\helpers\ArrayHelper::map(EDepartment::find()->where(['_structure_type'=>11])->asArray()->all(),'id','name'),
-            ['prompt'=>'Select Department']
+            $list,
+            ['prompt'=>'Select Talim yo\'nalish']
     ) ?>
 
     <?= $form->field($model, 'specialty')->textInput(['maxlength' => true]) ?>

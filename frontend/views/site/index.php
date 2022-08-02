@@ -25,12 +25,12 @@ $this->title = Yii::$app->name;
 
     <!--    navbar end-->
     <table cellspacing="0" border="0" class="sortable">
-        <colgroup width="23"></colgroup>
-        <colgroup width="152"></colgroup>
-        <colgroup width="376"></colgroup>
-        <colgroup width="238"></colgroup>
+<!--        <colgroup width="23"></colgroup>-->
+<!--        <colgroup width="250"></colgroup>-->
+<!--        <colgroup width="250"></colgroup>-->
+<!--        <colgroup width="250"></colgroup>-->
         <tr>
-            <td colspan=4 height="34" align="center" valign=middle><b><font face="Times New Roman" size=3
+            <td colspan=3 height="34" align="center" valign=middle><b><font face="Times New Roman" size=3
                                                                             color="#000000">
                         Urganch davlat universiteti ijodiy imtihonlarni o'tkazish joylaridagi kuzatuv kameralari
                     </font></b></td>
@@ -47,13 +47,13 @@ $this->title = Yii::$app->name;
             <td style="border: 1px solid #000000; vertical-align: middle" class="text-center">
                 <b>
                     <font face="Times New Roman" size=3 color="#000000">
-                        Fakultet nomi
+                        Ta'lim yo'nalishi nomi
                     </font>
                 </b>
             </td>
-                        <td style="border: 1px solid #000000; vertical-align: middle" class="text-center">
+            <td style="border: 1px solid #000000; vertical-align: middle" class="text-center">
                 <font face="Times New Roman" color="#000000">
-                    Xonalar
+                    Ta'lim shakli
                 </font>
             </td>
             <td style="border: 1px solid #000000; vertical-align: middle" class="text-center">
@@ -76,15 +76,13 @@ $this->title = Yii::$app->name;
                 </td>
                 <td style="border: 1px solid #000000; vertical-align: middle" class="text-center">
                     <font face="Times New Roman" size=3 color="#000000">
-                        <?php foreach ($department['cameras'] as $camera): ?>
-                            <?= $camera['name']."<br>" ?>
-                        <?php endforeach; ?>
+                            Kunduzgi / Sirtqi
                     </font>
                 </td>
                 <td style="border: 1px solid #000000; vertical-align: middle" class="text-center">
                     <font face="Times New Roman" size=3 color="#000000">
                         <?php foreach ($department['cameras'] as $camera): ?>
-                            <?= Html::a("Batafsil",Url::to(['site/cam','id'=>$camera['id']]))."<br>" ?>
+                            <?= Html::a($camera['name'], Url::to(['site/cam', 'id' => $camera['id']])) . "<br>" ?>
                         <?php endforeach; ?>
                     </font>
             </tr>

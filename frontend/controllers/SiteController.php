@@ -80,13 +80,29 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $camera = Camera::find()->asArray()->all();
-        $departments = EDepartment::find()->select(['id', 'name'])->where(['_structure_type' => 11])->asArray()->all();
+        $departments = EDepartment::find()->select(['id', 'name'])->where(['_structure_type' => 11])->andFilterWhere(['<','id',7])->orderBy('id')->asArray()->all();
         foreach ($departments as $key => $department) {
             $departments[$key]['cameras'] = Camera::find()->where(['department' => $department])->asArray()->all();
         }
+        $list = [
+            1 => "Tasviriy san'at va muhandislik grafikasi",
+            2 => "Musiqa ta'limi",
+            3 => "Jismoniy madaniyat",
+            4 => "Sport faoliyati (xotin-qizlar sporti yo'nalishlar bo'yicha)",
+            5 => "Sport faoliyati: kurash",
+            6 => "Sport faoliyati: futbol",
+        ];
+        /**
+         * replace department name by list items
+         */
+        foreach ($departments as $key => $department) {
+            $departments[$key]['name'] = $list[$department['id']];
+        }
+
         /**
          * remove empty cameras
          */
+//        dd($departments);
         foreach ($departments as $key => $department) {
             if (empty($department['cameras'])) {
                 unset($departments[$key]);
