@@ -84,7 +84,7 @@ $this->title = Yii::$app->name;
                 <td style="border: 1px solid #000000; vertical-align: middle" class="text-center">
                     <font face="Times New Roman" size=3 color="#000000">
                         <?php foreach ($department['cameras'] as $camera): ?>
-                            <?= Html::a($camera['link'],$camera['link'])."<br>" ?>
+                            <?= Html::a("Batafsil",Url::to(['site/cam','id'=>$camera['id']]))."<br>" ?>
                         <?php endforeach; ?>
                     </font>
             </tr>
