@@ -80,7 +80,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $camera = Camera::find()->asArray()->all();
-        $departments = EDepartment::find()->select(['id', 'name'])->where(['_structure_type' => 11])->andFilterWhere(['<','id',7])->orderBy('id')->asArray()->all();
+        $departments = EDepartment::find()->select(['id', 'name'])->where(['_structure_type' => 11])->andFilterWhere(['<','id',8])->orderBy('id')->asArray()->all();
         foreach ($departments as $key => $department) {
             $departments[$key]['cameras'] = Camera::find()->where(['department' => $department])->asArray()->all();
         }
@@ -91,9 +91,10 @@ class SiteController extends Controller
             4 => "Sport faoliyati (xotin-qizlar sporti yo'nalishlar bo'yicha)",
             5 => "Sport faoliyati: kurash",
             6 => "Sport faoliyati: futbol",
+	    7 => "Ko'zi ojiz abituriyentlar"
         ];
         /**
-         * replace department name by list items
+         * replace department name by list iyyyytems
          */
         foreach ($departments as $key => $department) {
             $departments[$key]['name'] = $list[$department['id']];
@@ -108,7 +109,6 @@ class SiteController extends Controller
                 unset($departments[$key]);
             }
         }
-
         return $this->render('index', ['departments' => $departments]);
     }
 

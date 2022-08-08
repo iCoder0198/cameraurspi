@@ -19,6 +19,7 @@ use yii\bootstrap5\ActiveForm;
         4 => "Sport faoliyati (xotin-qizlar sporti yo'nalishlar bo'yicha)",
         5 => "Sport faoliyati: kurash",
         6 => "Sport faoliyati: futbol",
+	7=>"Ko'zi ojizlar uchun"
     ]; ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
