@@ -33,7 +33,7 @@ $this->title = Yii::$app->name;
                                                                             color="#000000">
                         Urganch davlat universiteti ijodiy imtihonlarni o'tkazish joylaridagi kuzatuv kameralari
                     </font></b></td>
-            <td align="left" valign=middle><font face="Times New Roman" color="#000000"><br></font></td>
+            
         </tr>
         <tr style="border: 1px solid #000000; vertical-align: middle" class="text-center">
             <td height="59">
@@ -69,13 +69,8 @@ $this->title = Yii::$app->name;
                         <?= $category->name ?>
                     </font>
                 </td>
-
-
                 <td style="border: 1px solid #000000; vertical-align: middle" class="text-center">
-
-
-
-                <?php foreach ($category->cameras as $camera): ?>
+                    <?php foreach ($category->cameras as $camera): ?>
                         <?= Html::a($camera->name, Url::to(['site/cam', 'id' => $camera->id])) . "<br>" ?>
                     <?php endforeach; ?>
                 </td>
