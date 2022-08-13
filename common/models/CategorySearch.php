@@ -1,15 +1,15 @@
 <?php
 
-namespace common\models\query;
+namespace common\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Camera;
+use common\models\Category;
 
 /**
- * CameraSearch represents the model behind the search form of `common\models\Camera`.
+ * CategorySearch represents the model behind the search form of `common\models\Category`.
  */
-class CameraSearch extends Camera
+class CategorySearch extends Category
 {
     /**
      * {@inheritdoc}
@@ -17,9 +17,8 @@ class CameraSearch extends Camera
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['name', '_category', 'specialty', 'type', 'start_date', 'end_date', 'description'], 'safe'],
-            [['active'], 'boolean'],
+            [['code'], 'integer'],
+            [['name'], 'safe'],
         ];
     }
 
@@ -41,7 +40,7 @@ class CameraSearch extends Camera
      */
     public function search($params)
     {
-        $query = Camera::find();
+        $query = Category::find();
 
         // add conditions that should always apply here
 
@@ -59,17 +58,10 @@ class CameraSearch extends Camera
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'active' => $this->active,
-            '_category' => $this->_category,
+            'code' => $this->code,
         ]);
 
-        $query->andFilterWhere(['ilike', 'name', $this->name])
-            ->andFilterWhere(['ilike', 'specialty', $this->specialty])
-            ->andFilterWhere(['ilike', 'type', $this->type])
-            ->andFilterWhere(['ilike', 'start_date', $this->start_date])
-            ->andFilterWhere(['ilike', 'end_date', $this->end_date])
-            ->andFilterWhere(['ilike', 'description', $this->description]);
+        $query->andFilterWhere(['ilike', 'name', $this->name]);
 
         return $dataProvider;
     }

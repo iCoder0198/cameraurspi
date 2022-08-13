@@ -1,6 +1,6 @@
 <?php
 
-use common\models\hemis\EDepartment;
+use common\models\Category;
 use kartik\datetime\DateTimePicker;
 use yii\helpers\Html;
 use yii\bootstrap5\ActiveForm;
@@ -12,23 +12,16 @@ use yii\bootstrap5\ActiveForm;
 
 <div class="camera-form">
 
-    <?php $form = ActiveForm::begin(); $list = [
-        1 => "Tasviriy san'at va muhandislik grafikasi",
-        2 => "Musiqa ta'limi",
-        3 => "Jismoniy madaniyat",
-        4 => "Sport faoliyati (xotin-qizlar sporti yo'nalishlar bo'yicha)",
-        5 => "Sport faoliyati: kurash",
-        6 => "Sport faoliyati: futbol",
-	7=>"Ko'zi ojizlar uchun"
-    ]; ?>
+    <?php $form = ActiveForm::begin();  ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'link')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'department')->dropDownList(
-            $list,
-            ['prompt'=>'Select Talim yo\'nalish']
+
+    <?= $form->field($model, '_category')->dropDownList(
+          Category::find()->select(['name', 'code'])->indexBy('code')->column(),
+            ['prompt'=>'Select Category']
     ) ?>
 
     <?= $form->field($model, 'specialty')->textInput(['maxlength' => true]) ?>

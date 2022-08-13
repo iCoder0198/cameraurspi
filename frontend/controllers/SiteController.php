@@ -79,37 +79,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $camera = Camera::find()->asArray()->all();
-        $departments = EDepartment::find()->select(['id', 'name'])->where(['_structure_type' => 11])->andFilterWhere(['<','id',8])->orderBy('id')->asArray()->all();
-        foreach ($departments as $key => $department) {
-            $departments[$key]['cameras'] = Camera::find()->where(['department' => $department])->asArray()->all();
-        }
-        $list = [
-            1 => "Tasviriy san'at va muhandislik grafikasi",
-            2 => "Musiqa ta'limi",
-            3 => "Jismoniy madaniyat",
-            4 => "Sport faoliyati (xotin-qizlar sporti yo'nalishlar bo'yicha)",
-            5 => "Sport faoliyati: kurash",
-            6 => "Sport faoliyati: futbol",
-	    7 => "Ko'zi ojiz abituriyentlar"
-        ];
-        /**
-         * replace department name by list iyyyytems
-         */
-        foreach ($departments as $key => $department) {
-            $departments[$key]['name'] = $list[$department['id']];
-        }
+        $camera = \common\models\Camera::find()->orderBy('_category,id')->all();
+        return $this->render('index', ['camera' => $camera]);
 
-        /**
-         * remove empty cameras
-         */
-//        dd($departments);
-        foreach ($departments as $key => $department) {
-            if (empty($department['cameras'])) {
-                unset($departments[$key]);
-            }
-        }
-        return $this->render('index', ['departments' => $departments]);
     }
 
     public function actionCam(int $id)

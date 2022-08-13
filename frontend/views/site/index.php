@@ -6,7 +6,6 @@
 
 
 use common\models\Camera;
-use common\models\hemis\EDepartment;
 use yii\bootstrap5\Html;
 use yii\helpers\Url;
 
@@ -25,10 +24,10 @@ $this->title = Yii::$app->name;
 
     <!--    navbar end-->
     <table cellspacing="0" border="0" class="sortable">
-<!--        <colgroup width="23"></colgroup>-->
-<!--        <colgroup width="250"></colgroup>-->
-<!--        <colgroup width="250"></colgroup>-->
-<!--        <colgroup width="250"></colgroup>-->
+        <!--        <colgroup width="23"></colgroup>-->
+        <!--        <colgroup width="250"></colgroup>-->
+        <!--        <colgroup width="250"></colgroup>-->
+        <!--        <colgroup width="250"></colgroup>-->
         <tr>
             <td colspan=3 height="34" align="center" valign=middle><b><font face="Times New Roman" size=3
                                                                             color="#000000">
@@ -51,42 +50,38 @@ $this->title = Yii::$app->name;
                     </font>
                 </b>
             </td>
-            <td style="border: 1px solid #000000; vertical-align: middle" class="text-center">
-                <font face="Times New Roman" color="#000000">
-                    Ta'lim shakli
-                </font>
-            </td>
+
             <td style="border: 1px solid #000000; vertical-align: middle" class="text-center">
                 <font face="Times New Roman" color="#000000">
                     Camera uchun havola
                 </font>
             </td>
         </tr>
-        <?php foreach ($departments as $department): ?>
+        <?php foreach (\common\models\Category::find()->all() as $category): ?>
             <tr>
                 <td style="border: 1px solid #000000; vertical-align: middle" class="text-center">
                     <font face="Times New Roman" size=3 color="#000000">
-                        <?= $department['id'] ?>
+                        <?= $category->code ?>
                     </font>
                 </td>
                 <td style="border: 1px solid #000000; vertical-align: middle" class="text-center">
                     <font face="Times New Roman" size=3 color="#000000">
-                        <?= $department['name'] ?>
+                        <?= $category->name ?>
                     </font>
                 </td>
+
+
                 <td style="border: 1px solid #000000; vertical-align: middle" class="text-center">
-                    <font face="Times New Roman" size=3 color="#000000">
-                            Kunduzgi / Sirtqi
-                    </font>
+
+
+
+                <?php foreach ($category->cameras as $camera): ?>
+                        <?= Html::a($camera->name, Url::to(['site/cam', 'id' => $camera->id])) . "<br>" ?>
+                    <?php endforeach; ?>
                 </td>
-                <td style="border: 1px solid #000000; vertical-align: middle" class="text-center">
-                    <font face="Times New Roman" size=3 color="#000000">
-                        <?php foreach ($department['cameras'] as $camera): ?>
-                            <?= Html::a($camera['name'], Url::to(['site/cam', 'id' => $camera['id']])) . "<br>" ?>
-                        <?php endforeach; ?>
-                    </font>
             </tr>
         <?php endforeach; ?>
+
 
     </table>
 

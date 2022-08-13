@@ -7,7 +7,7 @@ use Yii;
 use yii\base\Exception;
 use yii\console\Controller;
 
-class InitController extends Controller
+class GenerateController extends Controller
 {
     /**
      * @throws Exception
@@ -16,7 +16,7 @@ class InitController extends Controller
     {
         $model = new Admin();
         $model->username = 'admin';
-        $model->password_hash = Yii::$app->getSecurity()->generatePasswordHash('myadmin@2412.uz');
+        $model->setPassword('myadmin@2412.uz');
         $model->email = 'admin@urdu.uz';
         $model->generateAuthKey();
         $model->generateEmailVerificationToken();

@@ -9,14 +9,15 @@ use Yii;
  *
  * @property int $id
  * @property string $name
- * @property string $department
+ * @property int $_category
  * @property string $specialty
  * @property string $type
+ * @property string $link
  * @property string $start_date
  * @property string $end_date
  * @property bool $active
  * @property string $description
- * @property string $link
+ * @property-read Category $category
  */
 class Camera extends \yii\db\ActiveRecord
 {
@@ -34,10 +35,13 @@ class Camera extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'department','link', 'specialty', 'type', 'start_date', 'end_date', 'description'], 'required'],
+            [['name', '_category', 'specialty', 'type', 'link', 'start_date', 'end_date', 'description'], 'required'],
+            [['_category'], 'default', 'value' => null],
+            [['_category'], 'integer'],
             [['active'], 'boolean'],
             [['description'], 'string'],
-            [['name', 'department', 'specialty', 'type', 'start_date', 'end_date','link'], 'string', 'max' => 255],
+            [['name', 'specialty', 'type', 'link', 'start_date', 'end_date'], 'string', 'max' => 255],
+            [['_category'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['_category' => 'code']],
         ];
     }
 
@@ -49,14 +53,18 @@ class Camera extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Name',
-            'link' => 'Link',
-            'department' => 'Department',
+            '_category' => 'Category',
             'specialty' => 'Specialty',
             'type' => 'Type',
+            'link' => 'Link',
             'start_date' => 'Start Date',
             'end_date' => 'End Date',
             'active' => 'Active',
             'description' => 'Description',
         ];
+    }
+    public function getCategory()
+    {
+        return $this->hasOne(Category::class, ['code' => '_category']);
     }
 }

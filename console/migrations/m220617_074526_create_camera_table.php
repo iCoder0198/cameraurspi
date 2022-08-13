@@ -15,7 +15,7 @@ class m220617_074526_create_camera_table extends Migration
         $this->createTable('{{%camera.camera}}', [
             'id' => $this->primaryKey(),
             'name' => $this->string()->notNull(),
-            'department'=>$this->string()->notNull(),
+            '_category'=>$this->integer()->notNull(),
             'specialty'=>$this->string()->notNull(),
             'type'=>$this->string()->notNull(),
             'link'=>$this->string()->notNull(),
@@ -25,6 +25,8 @@ class m220617_074526_create_camera_table extends Migration
             'description'=>$this->text()->notNull(),
 
         ]);
+        $this->createIndex('idx_category_code', '{{%camera.camera}}', '_category');
+        $this->addForeignKey('fk_category_code', '{{%camera.camera}}', '_category', '{{%camera.category}}', 'code', 'CASCADE', 'CASCADE');
     }
 
     /**
