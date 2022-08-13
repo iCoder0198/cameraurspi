@@ -60,7 +60,7 @@ $this->title = Yii::$app->name;
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
                 align="center" valign=middle><b><font color="#000000">Arizalar soni</font></b></td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
-                align="center" valign=middle><b><font color="#000000">Guruxlar soni</font></b></td>
+                align="center" valign=middle><b><font color="#000000">Guruhlar soni</font></b></td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
                 align="center" valign=middle><b><font color="#000000">Xona</font></b></td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
