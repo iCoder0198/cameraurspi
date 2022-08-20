@@ -64,8 +64,7 @@
 		<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font face="Times New Roman" color="#000000"><br></font></td>
 		<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font face="Times New Roman" color="#000000">
                 <a href="https://camera.urdu.uz/camera/20">Kuzatish 207-xona</a>
-                <a href="https://camera.urdu.uz/camera/21">Kuzatish 203-xona</a>
-                <a href="https://camera.urdu.uz/camera/28">Kuzatish 208-xona</a>
+
 
             </font>
         </td>
@@ -135,8 +134,7 @@
 		<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font face="Times New Roman" color="#000000"><br></font></td>
 		<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font face="Times New Roman" color="#000000">
                 <a href="https://camera.urdu.uz/camera/20">Kuzatish 207-xona</a>
-                <a href="https://camera.urdu.uz/camera/21">Kuzatish 203-xona</a>
-                <a href="https://camera.urdu.uz/camera/28">Kuzatish 208-xona</a></font></td>
+               </font></td>
 		<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font face="Times New Roman" color="#000000">apellyatsiya</font></td>
 	</tr>
 	<tr>
