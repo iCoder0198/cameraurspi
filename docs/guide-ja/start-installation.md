@@ -69,10 +69,10 @@ Bower と NPM の依存パッケージを Composer によって管理するた�
                # ディレクトリまたはファイルがある場合は、リクエストを直接使用
                RewriteCond %{REQUEST_FILENAME} !-f
                RewriteCond %{REQUEST_FILENAME} !-d
-               # そうでなければ、index.php にリクエストを引き渡す
+               # そうでなければ、index2.php にリクエストを引き渡す
                RewriteRule . index.php
 
-               # index.php をインデックス・ファイルとして使用
+               # index2.php をインデックス・ファイルとして使用
                DirectoryIndex index.php
 
                # ... その他の設定 ...
@@ -95,10 +95,10 @@ Bower と NPM の依存パッケージを Composer によって管理するた�
                # ディレクトリまたはファイルがある場合は、リクエストを直接使用
                RewriteCond %{REQUEST_FILENAME} !-f
                RewriteCond %{REQUEST_FILENAME} !-d
-               # そうでなければ、index.php にリクエストを引き渡す
+               # そうでなければ、index2.php にリクエストを引き渡す
                RewriteRule . index.php
 
-               # index.php をインデックス・ファイルとして使用
+               # index2.php をインデックス・ファイルとして使用
                DirectoryIndex index.php
 
                # ... その他の設定 ...

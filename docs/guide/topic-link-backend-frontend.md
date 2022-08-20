@@ -127,7 +127,7 @@ Now create `common/functions.php`:
 ```php
 <?php
 /**
- * Requires `define('USE_HTTPS', true)` to be in your `index.php` file!
+ * Requires `define('USE_HTTPS', true)` to be in your `index2.php` file!
  */
 function getUrlScheme()
 {
@@ -135,7 +135,7 @@ function getUrlScheme()
 }
 
 /**
- * Requires `define('DOMAIN_NAME', 'example.tld')` to be in your `index.php` file!
+ * Requires `define('DOMAIN_NAME', 'example.tld')` to be in your `index2.php` file!
  */
 function getDomain($subDomain = null)
 {

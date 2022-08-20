@@ -127,7 +127,7 @@ return [
 ```php
 <?php
 /**
- * `index.php` ファイルに `define('USE_HTTPS', true)` という行が必要
+ * `index2.php` ファイルに `define('USE_HTTPS', true)` という行が必要
  */
 function getUrlScheme()
 {
@@ -135,7 +135,7 @@ function getUrlScheme()
 }
 
 /**
- * `index.php` ファイルに `define('DOMAIN_NAME', 'example.tld')` という行が必要
+ * `index2.php` ファイルに `define('DOMAIN_NAME', 'example.tld')` という行が必要
  */
 function getDomain($subDomain = null)
 {

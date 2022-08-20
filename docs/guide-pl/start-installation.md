@@ -64,10 +64,10 @@ zrobić raz na każdym nowym środowisku.
                # jesli folder lub plik istnieje, po prostu wywolaj go
                RewriteCond %{REQUEST_FILENAME} !-f
                RewriteCond %{REQUEST_FILENAME} !-d
-               # w pozostalych przypadkach przekieruj na index.php
+               # w pozostalych przypadkach przekieruj na index2.php
                RewriteRule . index.php
 
-               # ustaw index.php jako plik indeksowy
+               # ustaw index2.php jako plik indeksowy
                DirectoryIndex index.php
 
                # ...pozostale ustawienia...
@@ -90,10 +90,10 @@ zrobić raz na każdym nowym środowisku.
                # jesli folder lub plik istnieje, po prostu wywolaj go
                RewriteCond %{REQUEST_FILENAME} !-f
                RewriteCond %{REQUEST_FILENAME} !-d
-               # w pozostalych przypadkach przekieruj na index.php
+               # w pozostalych przypadkach przekieruj na index2.php
                RewriteRule . index.php
 
-               # ustaw index.php jako plik indeksowy
+               # ustaw index2.php jako plik indeksowy
                DirectoryIndex index.php
 
                # ...pozostale ustawienia...
