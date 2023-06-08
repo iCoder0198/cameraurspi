@@ -79,7 +79,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('site/index');
+        return $this->render('index');
     }
 
     public function actionCam(int $id)
