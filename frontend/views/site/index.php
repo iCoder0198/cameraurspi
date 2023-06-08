@@ -5,7 +5,7 @@
                 Iqtisodiyot fakulteti
             </button>
         </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne">
             <div class="accordion-body">
                 <!-- Nav tabs -->
                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -23,11 +23,22 @@
                     </li>
                 </ul>
                 <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-camera1" role="tabpanel" aria-labelledby="pills-camera1-tab">
-                        <div><iframe width="640" height="480" src="https://rtsp.me/embed/nDfD5FtN/" frameborder="0" allowfullscreen></iframe><p align="right">powered by <a href="https://rtsp.me" title ='RTSP.ME - Free website RTSP video steaming service' target="_blank" >rtsp.me</a></p></div>
+                    <div class="tab-pane fade show active" id="pills-camera1" role="tabpanel"
+                         aria-labelledby="pills-camera1-tab">
+                        <div>
+                            <iframe width="640" height="480" src="https://rtsp.me/embed/nDfD5FtN/" frameborder="0"
+                                    allowfullscreen></iframe>
+                            <p align="right">powered by <a href="https://rtsp.me"
+                                                           title='RTSP.ME - Free website RTSP video steaming service'
+                                                           target="_blank">rtsp.me</a></p></div>
                     </div>
                     <div class="tab-pane fade" id="pills-camera2" role="tabpanel" aria-labelledby="pills-camera2-tab">
-                        <div><iframe width="640" height="480" src="https://rtsp.me/embed/TBHhGEsY/" frameborder="0" allowfullscreen></iframe><p align="right">powered by <a href="https://rtsp.me" title ='RTSP.ME - Free website RTSP video steaming service' target="_blank" >rtsp.me</a></p></div>
+                        <div>
+                            <iframe width="640" height="480" src="https://rtsp.me/embed/TBHhGEsY/" frameborder="0"
+                                    allowfullscreen></iframe>
+                            <p align="right">powered by <a href="https://rtsp.me"
+                                                           title='RTSP.ME - Free website RTSP video steaming service'
+                                                           target="_blank">rtsp.me</a></p></div>
                     </div>
                 </div>
             </div>
