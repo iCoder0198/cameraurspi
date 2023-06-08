@@ -36,25 +36,6 @@ AppAsset::register($this);
                 'style' => "background-color: #5894f5;"
             ],
         ]);
-//        echo Nav::widget([
-//            'options' => ['class' => 'navbar-nav'],
-//            'items' => [
-//                Yii::$app->user->isGuest ? (
-//                ['label' => Yii::t('app', 'Kirish'), 'class' => 'text-left', 'url' => ['/site/login']]
-//                ) : (
-//                    Html::beginForm(['/site/logout'], 'post')
-//                    . '<div class="row">'
-//                    . '<div class="offset-md-11 col-md-12">'
-//                    . Html::submitButton(
-//                        Yii::t('app', 'Chiqish') . ' (' . Yii::$app->user->identity->username . ')',
-//                        ['class' => 'btn  logout']
-//                    )
-//                    . '</div>'
-//                    . '</div>'
-//                    . Html::endForm()
-//                )
-//            ],
-//        ]);
         NavBar::end();
         ?>
     </header>
@@ -67,8 +48,7 @@ AppAsset::register($this);
 
     <footer class="footer mt-auto py-3 text-muted">
         <div class="container">
-            <p class="float-left">&copy; My Company <?= date('Y') ?></p>
-            <p class="float-right"><?= Yii::powered() ?></p>
+            <p class="float-left">&copy; UrDU RTTM <?= date('Y') ?></p>
         </div>
     </footer>
 
