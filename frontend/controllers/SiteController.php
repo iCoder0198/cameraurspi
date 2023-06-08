@@ -79,9 +79,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $camera = \common\models\Camera::find()->orderBy('_category,id')->all();
-        return $this->render('index', ['camera' => $camera]);
-
+        return $this->redirect(['site/index']);
     }
 
     public function actionCam(int $id)
