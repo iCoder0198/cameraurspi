@@ -24,35 +24,10 @@ use yii\bootstrap5\ActiveForm;
             ['prompt'=>'Select Category']
     ) ?>
 
-    <?= $form->field($model, 'specialty')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'type')->dropDownList([
-        '1' => 'Bitiruv malakaviy ish',
-        '2' => 'Yakuniy davlat attestatsiya',
-    ], ['prompt'=>'Select Type']) ?>
-
-    <?= $form->field($model, 'start_date')->widget(\kartik\datetime\DateTimePicker::class,
-        [
-            'type' => DateTimePicker::TYPE_COMPONENT_PREPEND,
-            'pluginOptions' => [
-                'autoclose'=>true,
-                'format' => 'dd-M-yyyy hh:ii'
-            ]
-    ]) ?>
-
-    <?= $form->field($model, 'end_date')->widget(\kartik\datetime\DateTimePicker::class,
-        [
-            'type' => DateTimePicker::TYPE_COMPONENT_PREPEND,
-            'pluginOptions' => [
-                'autoclose'=>true,
-                'format' => 'dd-M-yyyy hh:ii'
-            ]
-        ]) ?>
 
 
     <?= $form->field($model, 'active')->checkbox() ?>
 
-    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

@@ -6,6 +6,7 @@ use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\query\CameraSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -32,9 +33,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'name',
-            '_category',
-            'specialty',
-            'type',
+            [
+                'label'=>'Category',
+                'attribute'=>'_category',
+                'value'=>'category.name',
+
+            ],
             //'start_date',
             //'end_date',
             //'active:boolean',
@@ -43,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Camera $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
-                 }
+                }
             ],
         ],
     ]); ?>

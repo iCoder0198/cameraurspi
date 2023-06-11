@@ -2,7 +2,6 @@
 
 namespace common\models;
 
-use common\models\query\CameraSearch;
 use Yii;
 
 /**
@@ -10,9 +9,7 @@ use Yii;
  *
  * @property int $code
  * @property string $name
- * @property-read Camera[] $cameras
- *
-  */
+ */
 class Category extends \yii\db\ActiveRecord
 {
     /**
@@ -43,9 +40,5 @@ class Category extends \yii\db\ActiveRecord
             'code' => 'Code',
             'name' => 'Name',
         ];
-    }
-    public function getCameras()
-    {
-        return $this->hasMany(Camera::className(), ['_category' => 'code']);
     }
 }

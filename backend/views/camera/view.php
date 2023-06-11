@@ -32,13 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             'link:url',
-            'department',
-            'specialty',
-            'type',
-            'start_date',
-            'end_date',
             'active:boolean',
-            'description:ntext',
         ],
     ]) ?>
 

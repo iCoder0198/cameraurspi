@@ -15,14 +15,9 @@ class m220617_074526_create_camera_table extends Migration
         $this->createTable('{{%camera.camera}}', [
             'id' => $this->primaryKey(),
             'name' => $this->string()->notNull(),
-            '_category'=>$this->integer()->notNull(),
-            'specialty'=>$this->string()->notNull(),
-            'type'=>$this->string()->notNull(),
-            'link'=>$this->string()->notNull(),
-            'start_date'=>$this->string()->notNull(),
-            'end_date'=>$this->string()->notNull(),
-            'active'=>$this->boolean()->notNull()->defaultValue(true),
-            'description'=>$this->text()->notNull(),
+            '_category' => $this->integer()->notNull(),
+            'link' => $this->string()->notNull(),
+            'active' => $this->boolean()->notNull()->defaultValue(true),
 
         ]);
         $this->createIndex('idx_category_code', '{{%camera.camera}}', '_category');

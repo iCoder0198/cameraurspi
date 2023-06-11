@@ -18,7 +18,7 @@ class CameraSearch extends Camera
     {
         return [
             [['id'], 'integer'],
-            [['name', '_category', 'specialty', 'type', 'start_date', 'end_date', 'description'], 'safe'],
+            [['name', '_category'], 'safe'],
             [['active'], 'boolean'],
         ];
     }
@@ -64,12 +64,7 @@ class CameraSearch extends Camera
             '_category' => $this->_category,
         ]);
 
-        $query->andFilterWhere(['ilike', 'name', $this->name])
-            ->andFilterWhere(['ilike', 'specialty', $this->specialty])
-            ->andFilterWhere(['ilike', 'type', $this->type])
-            ->andFilterWhere(['ilike', 'start_date', $this->start_date])
-            ->andFilterWhere(['ilike', 'end_date', $this->end_date])
-            ->andFilterWhere(['ilike', 'description', $this->description]);
+        $query->andFilterWhere(['ilike', 'name', $this->name]);
 
         return $dataProvider;
     }

@@ -10,14 +10,8 @@ use Yii;
  * @property int $id
  * @property string $name
  * @property int $_category
- * @property string $specialty
- * @property string $type
  * @property string $link
- * @property string $start_date
- * @property string $end_date
  * @property bool $active
- * @property string $description
- * @property-read Category $category
  */
 class Camera extends \yii\db\ActiveRecord
 {
@@ -35,13 +29,12 @@ class Camera extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', '_category', 'specialty', 'type', 'link', 'start_date', 'end_date', 'description'], 'required'],
+            [['name', '_category', 'link'], 'required'],
             [['_category'], 'default', 'value' => null],
             [['_category'], 'integer'],
             [['active'], 'boolean'],
-            [['description'], 'string'],
-            [['name', 'specialty', 'type', 'link', 'start_date', 'end_date'], 'string', 'max' => 255],
-            [['_category'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['_category' => 'code']],
+            [['name', 'link'], 'string', 'max' => 255],
+            [['_category'], 'exist', 'skipOnError' => true, 'targetClass' => Category::class, 'targetAttribute' => ['_category' => 'code']],
         ];
     }
 
@@ -54,15 +47,11 @@ class Camera extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Name',
             '_category' => 'Category',
-            'specialty' => 'Specialty',
-            'type' => 'Type',
             'link' => 'Link',
-            'start_date' => 'Start Date',
-            'end_date' => 'End Date',
             'active' => 'Active',
-            'description' => 'Description',
         ];
     }
+
     public function getCategory()
     {
         return $this->hasOne(Category::class, ['code' => '_category']);

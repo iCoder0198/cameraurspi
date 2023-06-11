@@ -79,7 +79,15 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $cameras = Camera::find()->where(['active' => 1])->with('category')->asArray()->all();
+        $cameraList = [];
+
+        foreach ($cameras as $camera) {
+            $cameraList[$camera['category']['name']][] = $camera;
+        }
+        return $this->render('index',[
+            'cameraList' => $cameraList,
+        ]);
     }
 
     public function actionCam(int $id)
